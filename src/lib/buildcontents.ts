@@ -44,6 +44,7 @@ function buildContents(lines: Array<string>, filePath: string) {
             }
             if (typeof imports[hashPath] === 'undefined') {
                 imports[hashPath] = true;
+                hashPath = hashPath.replace(/@{root-entry-name}/g, 'default');
                 file = fs.readFileSync(hashPath, 'utf8');
                 splitLines = file.split(/\r\n|\n/);
                 splitLines[0] = splitLines[0].trim();
